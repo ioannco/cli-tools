@@ -1,9 +1,11 @@
 import argparse
 import webbrowser
+import os
 
 # Constants
 BASE_URL = "https://svacelab.intra.ispras.ru/svace/svace-dev/-/issues"
 TASK_URL = "https://onlyoffice.intra.ispras.ru/products/files/doceditor.aspx?fileid=20633#"  # Replace with actual task URL
+ISSUES_URL = f"https://svacelab.intra.ispras.ru/dashboard/issues?sort=label_priority_desc&state=opened&assignee_username[]={os.getenv('USER')}"
 
 def main():
     # Set up argument parser
@@ -38,7 +40,7 @@ def main():
         if args.comment:
             url += f"#note_{args.comment}"
     else:
-        url = BASE_URL
+        url = ISSUES_URL
 
     # Open the URL in the default browser
     webbrowser.open(url)
