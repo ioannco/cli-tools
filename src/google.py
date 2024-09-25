@@ -1,11 +1,12 @@
 import argparse
 import os
 import urllib.parse
+import webbrowser
 
 def search_google(query):
     # Properly encode the query for URL
     search_url = "https://www.google.com/search?q=" + urllib.parse.quote_plus(' '.join(query))
-    os.system(f'open {search_url}')
+    webbrowser.open(search_url)    
 
 def main():
     # Create an argument parser
