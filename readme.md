@@ -1,35 +1,36 @@
-# cli-tools
+## Command-Line Tools to Enhance Workflow
 
-Some command-line tools to help my workflow
-
-# Installation
+### Installation
 
 ```sh
 ./install.sh
 ```
-Then add `bin` folder to your `PATH`. 
 
-# Overwiew
-To see extended help, try adding `-h` as an argument.
+After installation, add the `bin` folder to your `PATH` environment variable.
 
-## `google` (`g`)
-Tool to open google query from command line
+### Overview
 
-### Usage: 
+To access comprehensive help, utilize the `-h` argument.
+
+### `google` (`g`)
+
+This tool facilitates the opening of a Google search query from the command line.
+
+#### Usage:
 ```sh
 g <request>
 ```
-Opens browser with your request
 
-## `browser `(`b`)
-Tool to open link without entering prefix (i.e. `http://` or `https://`). By default adds `https://` prefix.
+The tool launches a browser with the specified search query.
 
-### Usage: 
+### `browser` (`b`)
+
+The `browser` tool simplifies the process of opening a URL without the need to explicitly enter the prefix (e.g., `http://` or `https://`). By default, the tool appends the `https://` prefix.
+
+#### Usage:
 ```sh
 b <url without prefix>
 ```
-
-## `svace-issue` (`svi`)
 Internal tool for svace developers only.
 
 ### Usage:
