@@ -1,6 +1,7 @@
 import argparse
 import webbrowser
 import os
+import sys
 
 # Constants
 BASE_URL = "https://svacelab.intra.ispras.ru/svace/svace-dev/-/issues"
@@ -24,21 +25,26 @@ def main():
         help="Add a comment to the URL (e.g., #note_<comment_id>)."
     )
     parser.add_argument(
-        "-t", "--task", 
+        "-t", "--table", 
         action="store_true", 
-        help="Open the task URL."
+        help="Open the tasks table"
     )
     parser.add_argument(
-	"-u", "--url",
-	action="store_true",
-	help="Print URL instead of opening it"
+	    "-u", "--url",
+	    action="store_true",
+	    help="Print URL instead of opening it"
+    )
+    parser.add_argument(
+        "-m", "--markdown",
+        action="store_true",
+        help="Encode url in markdown syntax"
     )
 
     # Parse the arguments
     args = parser.parse_args()
 
     # Determine which URL to open
-    if args.task:
+    if args.table:
         url = TASK_URL
     elif args.issue_id:
         url = f"{BASE_URL}/{args.issue_id}"
@@ -47,11 +53,21 @@ def main():
     else:
         url = ISSUES_URL
 
-    if not args.url:
-    	# Open the URL in the default browser
-        webbrowser.open(url)
+    if args.url:
+        if args.markdown:
+            if args.table:
+                print(f'[task table]({url})')
+            elif args.issue_id:
+                if args.comment:
+                    print(f'[issue #{args.issue_id} note #{args.comment}]({url})')
+                else:
+                    print(f'[issue #{args.issue_id}]({url})')
+        else:
+            print(url)
+    elif args.markdown:
+        print('Error: --markdown option available only if --url is on.', file=sys.stderr)
     else:
-	    print(url)
+        webbrowser.open(url)
 
 if __name__ == "__main__":
     main()
