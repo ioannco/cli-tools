@@ -28,6 +28,11 @@ def main():
         action="store_true", 
         help="Open the task URL."
     )
+    parser.add_argument(
+	"-u", "--url",
+	action="store_true",
+	help="Print URL instead of opening it"
+    )
 
     # Parse the arguments
     args = parser.parse_args()
@@ -42,8 +47,11 @@ def main():
     else:
         url = ISSUES_URL
 
-    # Open the URL in the default browser
-    webbrowser.open(url)
+    if not args.url:
+    	# Open the URL in the default browser
+        webbrowser.open(url)
+    else:
+	    print(url)
 
 if __name__ == "__main__":
     main()
