@@ -51,5 +51,5 @@ svi
 
 To open task table (aka tablichka)
 ```sh
-svi -t|--task
+svi -t|--table
 ```
