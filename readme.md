@@ -31,9 +31,19 @@ The `browser` tool simplifies the process of opening a URL without the need to e
 ```sh
 b <url without prefix>
 ```
+
+### `code` 
+Basically, macOS only alias to open vscode with sertain path
+
+#### Usage:
+```sh
+code <path>
+```
+
+### `svace-issue` (`svi`)
 Internal tool for svace developers only.
 
-### Usage:
+#### Usage:
 To open issue with <issue_id>:
 ```sh
 svi <issue_id>
